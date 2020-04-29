@@ -1,0 +1,33 @@
+
+
+<form [formGroup]="updateProfileForm"  (ngSubmit)="onClickUpdate()" style="width: 50%;margin-left: 5%;" >  
+
+    <div class="form-group"> 
+        <label for="firstName">First Name</label>
+        <input class="form-control" [(ngModel)]="cl.firstName" formControlName="firstName" name="firstName"  type="text">
+    </div> 
+
+    <div class="form-group"> 
+        <label for="lastName">Last Name</label>
+    <input class="form-control" type="text" [(ngModel)]="cl.lastName" formControlName="lastName" name="lastName" type="text" >
+    </div> 
+
+    <div class="form-group" >  
+        <label for="birthDay">Birthday</label>
+
+        <input class="form-control" [value]="cl.birthday|date:'yyyy-MM-dd'" type="date" [(ngModel)]="cl.birthday" formControlName="birthDay" name="birthDay"  >
+
+    </div>
+
+    <div class="form-group" >  
+        <label for="Image">Image</label>
+
+        <input formControlName="avatar" class="form-control"  type="file" name="avatar" (change)="onFileSelect($event)" >
+
+    </div>
+ 
+
+
+<button type="submit" class="btn btn-primary" > Update </button>
+<button style="margin-left: 1%;" class="btn btn-light" (click)="redirectToHome()"  >Home</button>
+</form> 

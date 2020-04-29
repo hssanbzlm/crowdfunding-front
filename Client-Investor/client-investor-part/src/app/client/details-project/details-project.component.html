@@ -1,0 +1,137 @@
+
+<div class="row"  >
+    <div  style="margin-left: 5%; margin-top: 3%;" class="col-xl-3 col-md-6 mb-4" >
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"  >{{p.title}}</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{p.budget}}</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{p.description}}</div>
+              <button style="margin-top: 5%;" class="btn btn-primary" (click)="navigateToUpdate(p._id)" > update </button>
+
+
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>   
+
+
+
+  <button style="margin-left: 5%;" class="btn btn-light" (click)="backHome()" > Back </button> 
+
+     
+<hr>
+
+<div class="container">
+   <div *ngIf="feed?.length!=0" > 
+     <h3> Comments </h3>
+  <div style="margin-bottom: 2%;" *ngFor="let f of feed" class="row">
+   
+  <div class="col-sm-1">
+  <div class="thumbnail">
+  <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+  </div><!-- /thumbnail -->
+  </div><!-- /col-sm-1 -->
+  
+  <div class="col-sm-5">
+  <div class="panel panel-default">
+  <div class="panel-heading"> 
+    <strong>{{f.idInvestor}}</strong> <span style="margin-left: 1%;" class="text-muted" >{{f.date |date:'medium' }}  </span>
+
+  </div>
+  <div class="panel-body">
+    <div [innerHTML]="f.content"></div> 
+
+  </div>
+  </div>
+  </div>
+  </div>   
+
+<hr>
+</div>
+  <br>  
+</div>
+
+
+
+
+
+
+    
+
+  
+  <div *ngIf="idChat" >  
+    <section class="msger">
+      <header class="msger-header">
+        <div class="msger-header-title">
+          <i class="fas fa-comment-alt"></i> SimpleChat
+        </div>
+        <div class="msger-header-options">
+          <span><i class="fas fa-cog"></i></span>
+        </div>
+      </header>
+    
+      <main  class="msger-chat" *ngFor="let msg of chat.idMessages"> 
+
+
+        <div  class="msg left-msg" *ngIf="msg.idUser==idUser" >
+          
+          <div class="msg-img"
+           >           <img class="img-profile rounded-circle" [src]="img">
+          </div>
+    
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">{{clientFirstNameLastName}}</div>
+              <div class="msg-info-time">{{msg.date |date:'medium'}}</div>
+            </div>
+    
+            <div class="msg-text">
+                
+              {{msg.message}}
+
+            </div>
+          </div>
+        </div>
+    
+        <div class="msg right-msg" *ngIf="msg.idUser!=idUser" >
+          <div
+           class="msg-img"
+           style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+          ></div>
+    
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">{{msg.idUser}}</div>
+              <div class="msg-info-time">{{msg.date |date:'medium'}}</div>
+            </div>
+    
+            <div class="msg-text">
+              {{msg.message}}
+            </div>
+          </div>
+        </div>
+      </main>
+    
+      <form class="msger-inputarea">
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="message" type="text" class="msger-input" placeholder="Enter your message...">
+        <button (click)="sendMessage()" type="submit" class="msger-send-btn">Send</button>
+      </form>
+    </section>
+  
+    
+
+  </div> 
+
+
+  
+ 
+
+
+

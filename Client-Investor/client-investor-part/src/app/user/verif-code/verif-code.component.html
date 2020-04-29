@@ -1,0 +1,7 @@
+<form [formGroup]="codeForm" (ngSubmit)="verifCode()" >
+
+    <input placeholder="enter the code" formControlName="code" type="number" [(ngModel)]="code" style="margin-left: 10%;margin-top: 3%;" >
+
+    <button style="margin-left: 2%;" type="submit" class="btn btn-primary">Verify code</button>
+
+</form>

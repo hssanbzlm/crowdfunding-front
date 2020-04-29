@@ -1,0 +1,23 @@
+<form [formGroup]="updateProject" (ngSubmit)="onClickUpdate()" style="width: 50%;margin-left: 1%;" >
+     
+    <div class="form-group" > 
+        <label> Title </label>
+    <input class="form-control" [(ngModel)]="p.title" formControlName="title" type="text" placeholder="title" > 
+    </div>
+
+
+     <div class="form-group"> 
+         <label> Descirption </label>
+     <textarea class="form-control" [(ngModel)]="p.description" formControlName="description"  type="text" placeholder="description"></textarea>
+     </div>
+
+
+    <div class="form-group" >
+        <label> budget </label>
+    <input class="form-control" [(ngModel)]="p.budget" formControlName="budget" type="number" placeholder="budget">
+    </div>
+
+    <button class="btn btn-primary"  type="submit" > Update </button> 
+    <button style="margin-left: 5%;" class="btn btn-light" (click)="backToDetails(p._id)" > Back </button>
+
+</form>

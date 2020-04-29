@@ -1,0 +1,7 @@
+<form [formGroup]="codeForm" (ngSubmit)="verifCode()" >
+
+    enter the code sent to your email : <input formControlName="code" type="number" [(ngModel)]="code">
+
+    <button type="submit" class="btn btn-primary">Send link</button>
+
+</form>

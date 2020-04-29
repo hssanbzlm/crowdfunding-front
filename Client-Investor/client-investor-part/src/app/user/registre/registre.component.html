@@ -1,0 +1,125 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    
+                       
+                    <div class="form-group">  
+
+                        Client <input (ngModelChange)="change()" type="radio" formControlName="user"  name="user" value="client"  />
+                        Investor <input (ngModelChange)="change()" type="radio" formControlName="user"  name="user" value="investor" />
+
+                        <div *ngIf="submitted && registerForm.get('user').errors" class="alert alert-danger">
+                                <div *ngIf="registerForm.get('user').errors.required">You must choose client/investor</div>
+                            </div>
+                            
+                </div> 
+
+                          
+
+                      
+
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input (ngModelChange)="change()" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('email').errors }" />
+                        <div *ngIf="submitted && registerForm.get('email').errors" class="invalid-feedback">
+                            <div *ngIf="registerForm.get('email').errors.required">email is required</div>
+
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input (ngModelChange)="change()" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('password').errors }" />
+                        <div *ngIf="submitted && registerForm.get('password').errors" class="invalid-feedback">
+                            <div *ngIf="registerForm.get('password').errors.required">password is required</div>
+
+                        </div>
+                    </div> 
+
+
+
+
+                   <div *ngIf="registerForm.get('user').value=='client'"> 
+                          
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('lastName').errors }" />
+                        <div (ngModelChange)="change()" *ngIf="submitted && registerForm.get('lastName').errors" class="invalid-feedback">
+                            <div *ngIf="registerForm.get('lastName').errors.required">lastName is required</div>
+                            <div *ngIf="registerForm.get('lastName').errors.pattern" >lastName contains only letters</div>
+
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input (ngModelChange)="change()" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('firstName').errors }" />
+                        <div *ngIf="submitted && registerForm.get('firstName').errors" class="invalid-feedback">
+                            <div *ngIf="registerForm.get('firstName').errors.required">firstName is required</div>
+                            <div *ngIf="registerForm.get('firstName').errors.pattern" >firstName contains only letters</div>
+
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label>Birthday</label>
+                        <input (ngModelChange)="change()" type="date" formControlName="birthday" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('birthday').errors }" />
+                        <div *ngIf="submitted && registerForm.get('birthday').errors" class="invalid-feedback">
+                            <div *ngIf="registerForm.get('birthday').errors.required">birthday is required</div>
+
+                        </div>
+                    </div> 
+
+                      </div> 
+                      <div (ngModelChange)="change()" *ngIf="registerForm.get('user').value=='investor'" >
+                        <div class="form-group">
+                            <label>Enterprise</label>
+                            <input type="text" formControlName="enterprise" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('enterprise').errors }" />
+                            <div *ngIf="submitted && registerForm.get('enterprise').errors" class="invalid-feedback">
+                                <div *ngIf="registerForm.get('enterprise').errors.required">enterprise is required</div>
+                                <div *ngIf="registerForm.get('enterprise').errors.pattern" >enterprise contains only letters</div>
+    
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input (ngModelChange)="change()" type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('address').errors }" />
+                            <div *ngIf="submitted && registerForm.get('address').errors" class="invalid-feedback">
+                            <div *ngIf="registerForm.get('address').errors.required">address is required</div>    
+                            </div>
+                        </div>
+
+                      </div>
+
+
+
+
+                
+
+                   
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form> 
+
+                  
+                
+
+
+            </div>
+        </div>
+    </div>
+    
+</div> 
+
+<div *ngIf="msg!=''">
+    <div class="alert alert-success" role="alert">
+        {{msg}}
+      </div>
+
+</div>

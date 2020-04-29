@@ -1,0 +1,45 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <input formControlName="email"   [(ngModel)]="email" type="text"  class="fadeIn second" name="login" placeholder="email">
+        <input formControlName="password"  [(ngModel)]="password" type="password"  class="fadeIn third" name="login" placeholder="password">
+          
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="user" name="user" id="exampleRadios1" value="client" checked>
+          <label class="form-check-label" for="exampleRadios1">
+           client
+          </label> 
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="user"  name="user" id="exampleRadios1" value="investor" >
+            <label class="form-check-label" for="exampleRadios1">
+              Investor
+            </label>
+          </div>
+        </div> 
+
+        <div *ngIf=" submitted && loginForm.get('user').errors" > 
+          <div class="alert alert-danger" role="alert" style="width:40%;margin-bottom: 1%;margin-left: 25%;" >
+              You must choose client/investor
+            </div> 
+      </div>
+        
+        
+        <div *ngIf=" submitted && (loginForm.get('email').errors || loginForm.get('password').errors )" > 
+          <div class="alert alert-danger" role="alert" style="width:40%;margin-bottom: 1%;margin-left: 25%;" >
+              Verify email or/and password
+            </div> 
+      </div> 
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+  
+      <div id="formFooter">
+        <a class="underlineHover" (click)="redirectToForgotPass()" >Forgot Password?</a>
+      </div>
+      <div id="formFooter">
+        <a class="underlineHover" (click)="redirectToRegistre()">You don't have an account</a>
+      </div>
+  
+    </div>
+  </div>
